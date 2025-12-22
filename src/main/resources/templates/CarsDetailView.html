@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="index::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" th:href="@{/css/gls.css}" /> 
+</head>
+<body>
+<section style="background-color:#FFF8F1;margin-top:100px;">
+
+<div>
+    <div class="align-div-cao">
+      <div id="slider-container">
+        <div id="image-slider">
+          <div class="slide"><img th:src="${car.cimage1}" alt="Image 1" /></div>
+          <div class="slide"><img th:src="${car.cimage2}" alt="Image 2" /></div>
+          <div class="slide"><img th:src="${car.cimage3}" alt="Image 3" /></div>
+          <!-- Add more slides as needed -->
+        </div>
+        <button class="slider-btn" id="prev-btn" onclick="prevSlide()">
+          <
+        </button>
+        <button class="slider-btn" id="next-btn" onclick="nextSlide()">
+          >
+        </button>
+      </div>
+      <div class="car_info_div">
+        <h4 class="car_name_heading" th:text="${car.carName}"></h4>
+        <h4  th:text="'₹ '+${car.price}+' /day'"></h4>
+        <div class="car_info_div_logo_align">
+       <div class="home-sci">
+        <img th:src="@{/img/suv.png}">
+        <p class="car_info_inside_div_para" th:text="${car.category}"></p>
+       </div>
+       <div class="home-sci">
+        <img th:src="@{/img/freezer.png}" >
+        <p class="car_info_inside_div_para" th:text="${car.ac}"></p>
+       </div>
+       <div class="home-sci">
+        <img th:src="@{/img/seat.png}">
+        <p class="car_info_inside_div_para" th:text="${car.seat}"></p>
+       </div>
+        </div>
+        <div class="home-sci">
+          <img th:src="@{/img/tag.png}">
+          <p class="car_info_inside_div_para1">Don't miss out on the best offers for this month</p>
+        </div>
+
+        <a href="tel:+918999279763" class="cp_button">
+          <img th:src="@{/img/call.png}" alt="">Call Now</a>
+  
+          <a href="https://wa.me/+918999279763" class="cp_button2">
+            <img th:src="@{/img/Whatsapp.png}" alt="">Whatsapp
+          </a>
+          
+      </div>
+      </div>
+     
+
+      <div class="booing_align">
+  
+        <div class="FEATURES_OPTIONS">
+          <h1>FEATURES & OPTIONS</h1>
+          <br>
+          
+          <div class="features_align">
+            <div class="features_groups">
+              <img th:src="@{/img/location.png}" class="features_image">
+              <p class="features_align_paragraph">Extra km fare
+              </p>
+              <h4 class="features_align_heading4">
+                25.0/km after 10 kms</h4>
+            </div>
+            <div class="features_groups">
+              <img th:src="@{/img/extra-time.png}" class="features_image">
+              <p class="features_align_paragraph">Extra time fare</p>
+              <h4 class="features_align_heading4">
+                3.0 per min after 1hr</h4>
+            </div>
+            <div class="features_groups3">
+              <img th:src="@{/img/Petrol.png}">
+              <p class="features_align_paragraph">Fuel</p>
+              <h4 class="features_align_heading4" th:text="${car.fuel}"></h4>
+            </div>
+            <div class="features_groups3">
+              <img th:src="@{/img/Vector-4.png}">
+              <p class="features_align_paragraph">Exterior Color</p>
+              <h4 class="features_align_heading4" th:text="${car.color}">
+       </h4>
+            </div>
+          </div>
+    
+          <div class="features_align">
+            
+            <div class="features_groups3_ground_clearance">
+              <img th:src="@{/img/Road-car.png}">
+              <p class="features_align_paragraph">Ground Clearance</p>
+              <h4 class="features_align_heading4" th:text="${car.groundClearance}"></h4>
+            </div>
+            <div class="features_groups3">
+              <img th:src="@{/img/car_boot.png}">
+              <p class="features_align_paragraph">Boot Space</p>
+              <h4 class="features_align_heading4" th:text="${car.bootspace}"></h4>
+            </div>
+            <div class="features_groups4">
+              <img th:src="@{/img/Car-Power-Charger.png}">
+              <p class="features_align_paragraph">Torque</p>
+              <h4 class="features_align_heading4" th:text="${car.torque}"></h4>
+            </div>
+            <div class="features_groups4_engine">
+              <img th:src="@{/img/Car-Engine.png}">
+              <p class="features_align_paragraph">Engine</p>
+              <h4 class="features_align_heading4" th:text="${car.engine}"></h4>
+            </div>
+          </div>
+        </div>
+       </div>
+        
+    </div>
+<!-- --------------------------------Request For Booking------------------------------------ -->
+      
+        <div class="Booking">
+          <h3>Booking This Car</h3>
+          <hr>
+          <form th:action="@{/book-car}" action="" method="post">
+          
+	              <input type="text" placeholder="Enter Name" class="input_booking" name="name">
+	              <input type="number" placeholder="Enter Mobile No" class="input_booking" name="mobNo">
+	          
+                  <br>
+		          <input type="text" placeholder="Enter Email Id " class="input_booking" name="email">
+		          <input type="number" placeholder="Enter AadharNumber" class="input_booking" name="aadharNo">
+		          <br>
+		          
+		          <input type="text" placeholder="Enter license_No" class="input_booking" name="licenseNo">
+		          <input type="text" placeholder="Enter Address" class="input_booking" name="address">
+		          <br>
+		         <select class="input_booking" name="state">
+		          <option>Select State</option>
+		          <option>Andra Pradesh</option>
+		          <option>Assam</option>
+		          <option>Bihar</option>
+		          <option>Goa</option>
+		          <option>Gujarat</option>
+		          <option>Haryana</option>
+		          <option>Jammu and Kashmir</option>
+		          <option>Jharkhand</option>
+		          <option>Kerla</option>
+		          <option>Madya Pradesh</option>
+		          <option>Maharashtra</option>
+		          <option>Nagaland</option>
+		          <option>Panjab</option>
+		          <option>Rajasthan</option>
+		          <option>Tamil Nadu</option>
+		          <option>Telanganga</option>
+		          <option>Uttar Pradesh</option>
+		          <option>West Bengal</option>
+		          <option>Delhi</option>
+		          <option>Lakshadeep</option>
+		         </select>
+		          
+		        <input type="text" th:value="${car.carName}" class="input_booking" name="carModel" readonly>
+		           <br>
+		           <input type="text" placeholder="Enter PickUp Location" class="input_booking" name="pickUp">
+		          <input type="text" placeholder="Enter Drop Off Location" class="input_booking" name="dropUp">
+		           <br>
+		           <p class=note_para style="color:red;font-family:'Inter';font-weight: 600;margin-right: 350px;padding: 0px;">Return Time 11:00 PM On Last Day</p>
+		           <input type="number" placeholder="Enter Days" class="input_booking" name="days">
+		          <input type="text" placeholder="Any Query ?" class="input_booking" name="query">
+		          <br>
+		          <input type="text" th:value="${car.price}" class="input_booking" name="price" readonly>/day
+		          <br>
+		          <div class="container text-center" style="margin-top:30px;">
+				   <button type="submit" class="btn btn-dark text-white">
+					Book Car
+				   </button>
+							 	
+				  </div>
+		          
+          </form>
+        </div>
+    
+
+      <hr>
+    </div>
+</section>
+</body>
+</html>

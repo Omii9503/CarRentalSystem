@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="index::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Add New Product Page</title>
+</head>
+<body>
+	<section style="height:150vh;margin-top:100px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card mt-1">
+
+				      <div class="container text-center" style="padding-top:20px;">
+				      	<img class="" style="width:80px;" th:src="@{/img/membership.png}"/>
+				      </div>
+						<h1 class="text-center" style="padding-bottom:20px;">Update Car Detail !!</h1>
+						
+						<div th:if="${message}" th:classappend="${message.type}" class="alert" role="alert">
+          					<p class="text-center" th:value="${message.content}"></p>
+    					</div>
+    					
+						<form action="" th:action="@{/update-car}" method="post">
+						
+						<div class="alert alert-danger" th:if="${updatecardata}"  role="alert">
+  								<h6 th:value="${updatecardata}"></h6>
+							</div>
+							
+						         <div class="col" style="margin-bottom:20px">
+								   <label class="form-label text-dark">Old Car Name To Update The Data <span style="color:red">*</span></label>
+								    <input style="color:red" type="text" class="form-control"  placeholder="Existing Car Name" aria-label="First name" name="oldcarName" th:value="${oldCarName}" readonly>
+								  </div>
+								<div class="row g-3">
+								  <div class="col">
+								   <label class="form-label text-dark">Enter New Car Name<span style="color:red">*</span></label>
+								    <input type="text" class="form-control"  placeholder="Enter Car Name" aria-label="First name" name="carName" th:value="${carDataToUpdate.carName}">
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Select New Car Category<span style="color:red">*</span></label>
+								    <select id="inputState" class="form-select" name="category">
+								        <option value="" disabled>Choose...</option>
+								        <option value="Luxury" th:selected="${carDataToUpdate.category == 'Luxury'}">Luxury</option>
+								        <option value="Sedan" th:selected="${carDataToUpdate.category == 'Sedan'}">Sedan</option>
+								        <option value="SUV" th:selected="${carDataToUpdate.category == 'SUV'}">SUV</option>
+								        <option value="Electric vehicle" th:selected="${carDataToUpdate.category == 'Electric vehicle'}">Electric vehicle</option>
+								    </select>
+								  </div>
+							 </div>
+							 
+							 <div class="row g-3 mt-1">
+								  <div class="col" >
+								   <label  class="form-label text-dark">Enter New Car Rent Price<span style="color:red">*</span></label>
+								    <input type="number" class="form-control" placeholder="Enter Car Rent Price" aria-label="First name" name="price" th:value="${carDataToUpdate.price}" required>
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Enter No of Seats<span style="color:red">*</span></label>
+								    <input type="number" class="form-control" placeholder="Enter No of Seats" aria-label="Last name" name="seat" th:value="${carDataToUpdate.seat}" required>
+								  </div>
+							 </div>
+							 <div class="row g-3 mt-1">
+								  <div class="col">
+								    <label class="form-label text-dark">Select New Car Transmission [Auto/Manual]<span style="color:red">*</span></label>
+									    <select id="inputState" class="form-select" name="transmission">
+									        <option value="" disabled>Choose...</option>
+									        <option value="A" th:selected="${carDataToUpdate.transmission == 'A'}">A</option>
+									        <option value="M" th:selected="${carDataToUpdate.transmission == 'M'}">M</option>
+									    </select>
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Enter New No of Doors<span style="color:red">*</span></label>
+								    <input type="number" class="form-control" placeholder="Number of Doors" aria-label="Last name" name="door" th:value="${carDataToUpdate.door}" required>
+								  </div>
+							 </div>
+							 <div class="row g-3 mt-1">
+								  <div class="col">
+								   <label  class="form-label text-dark">Enter Car Image URL<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Image Url" aria-label="First name" name="img" th:value="${carDataToUpdate.img}" required>
+								  </div>
+								  <div class="col">
+								   <label class="form-label text-dark">Select Car AC or Non-AC<span style="color:red">*</span></label>
+								    <select id="inputState" class="form-select" name="ac">
+								        <option value="" disabled>Choose...</option>
+								        <option value="A/C" th:selected="${carDataToUpdate.ac == 'A/C'}">A/C</option>
+								        <option value="Non A/C" th:selected="${carDataToUpdate.ac == 'Non A/C'}">Non A/C</option>
+								    </select>
+								  </div>
+							 </div>
+							 
+							 <div class="row g-3 mt-1">
+								  <div class="col">
+								   <label  class="form-label text-dark">Enter Car Color<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Color" aria-label="First name" name="color" th:value="${carDataToUpdate.color}" required>
+								  </div>
+								  <div class="col">
+								    <label class="form-label text-dark">Select Car Fuel<span style="color:red">*</span></label>
+									    <select id="inputState" class="form-select" name="fuel">
+									        <option value="" disabled>Choose...</option>
+									        <option value="Petrol" th:selected="${carDataToUpdate.fuel == 'Petrol'}">Petrol</option>
+									        <option value="Diesel" th:selected="${carDataToUpdate.fuel == 'Diesel'}">Diesel</option>
+									    </select>
+								  </div>
+							 </div>
+							 
+							 <div class="row g-3 mt-1">
+								  <div class="col" >
+								   <label  class="form-label text-dark">Enter Car Ground Clearance<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Ground Clearance" aria-label="First name" name="groundClearance" th:value="${carDataToUpdate.groundClearance}" required>
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Enter Car Bootspace<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Bootspace" aria-label="Last name" name="bootspace" th:value="${carDataToUpdate.bootspace}" required>
+								  </div>
+							 </div>
+							 
+							  <div class="row g-3 mt-1">
+								  <div class="col" >
+								   <label  class="form-label text-dark">Enter Car Torque<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Torque" aria-label="First name" name="torque" th:value="${carDataToUpdate.torque}" required>
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Enter Car Engine Details<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car Engine Details" aria-label="Last name" name="engine" th:value="${carDataToUpdate.engine}" required>
+								  </div>
+							 </div>
+							 
+							 <div class="row g-3 mt-1">
+								  <div class="col" >
+								   <label  class="form-label text-dark">Enter Car 1st Image<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car 1st Image" aria-label="First name" name="cimage1" th:value="${carDataToUpdate.cimage1}" required>
+								  </div>
+								  <div class="col">
+								    <label  class="form-label text-dark">Enter Car 2nd Image<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car 2nd Image" aria-label="Last name" name="cimage2" th:value="${carDataToUpdate.cimage2}" required>
+								  </div>
+							 </div>
+							 
+							 <div class="row g-3 mt-1">
+								  <div class="col" >
+								   <label  class="form-label text-dark">Enter Car 3rd Image<span style="color:red">*</span></label>
+								    <input type="text" class="form-control" placeholder="Enter Car 3rd Image" aria-label="First name" name="cimage3" th:value="${carDataToUpdate.cimage3}" required>
+								  </div>
+								  
+							 </div>
+							 
+							
+							 <div class="form-group form-check">
+								<input type="checkbox" name="agreement" class="form-check-input" id="agreement"/>
+								<label for="agreement">Accept terms and conditions</label>
+							</div>
+							 
+							 <div class="container text-center">
+							 	<button type="submit"  class="btn bg-primary text-white">
+							 		Update Car
+							 	</button>
+							 	<button type="reset" class="btn btn-warning text-white">
+							 		Reset
+							 	</button>
+							 </div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
